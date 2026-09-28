@@ -1,0 +1,61 @@
+table 'Customer Details'
+	lineageTag: 2fe56074-eaa0-4920-a14f-662a65d271e2
+
+	column customer_id
+		dataType: string
+		lineageTag: 74908377-6ef2-4ddc-8a85-6bc2c51b59fd
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_zip_code_prefix
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fde6f71-c390-44d8-9b99-a56ef17b6d36
+		summarizeBy: none
+		sourceColumn: customer_zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_city
+		dataType: string
+		lineageTag: 5a85a922-3014-4a2e-8d7f-1026f5b4890d
+		summarizeBy: none
+		sourceColumn: customer_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_state
+		dataType: string
+		lineageTag: edf9a8da-1214-45e2-aa90-82be8305c3aa
+		summarizeBy: none
+		sourceColumn: customer_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Location' = 'Customer Details'[customer_state] & "Brazil"
+		lineageTag: d9b367c0-c69b-47a6-a035-c07394deea59
+		dataCategory: Place
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Details' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\Nexusgoods_customers_dataset .csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_zip_code_prefix", Int64.Type}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"customer_id", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"customer_id", Text.Clean, type text}})
+				in
+				    #"Cleaned Text"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,164 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1180.455731446762,
+            "y": 0
+          },
+          "nodeIndex": "Category Name",
+          "nodeLineageTag": "5fa9261b-5c28-47c7-a253-bc39680ae495",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1471.0666196907696,
+            "y": 0
+          },
+          "nodeIndex": "Geoloaction",
+          "nodeLineageTag": "40dc4fc7-81b2-4bc7-ab44-28bb10b2bd25",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 595.02311382501034,
+            "y": 0
+          },
+          "nodeIndex": "Order Items",
+          "nodeLineageTag": "9cff82b3-867c-4212-a6c7-1c9f289cbf58",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 590.543674392989,
+            "y": 278.42372542824961
+          },
+          "nodeIndex": "Order Payment",
+          "nodeLineageTag": "f82a1423-9e94-42ef-b6f9-fd195430444b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 587.82892974796528,
+            "y": 510.13206068397409
+          },
+          "nodeIndex": "Order Review",
+          "nodeLineageTag": "1106dcb7-0776-43ff-84ed-be2ff87e35d1",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 319.75666870889188,
+            "y": 254.66809952652284
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "ce08c692-cec8-4d01-9a0c-80f8176a0345",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 904.2610318169759,
+            "y": 1.4093137176685389
+          },
+          "nodeIndex": "Products",
+          "nodeLineageTag": "d7429e04-9df0-4940-8ab0-ec521d850744",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 903.43639946647136,
+            "y": 324.41683055196359
+          },
+          "nodeIndex": "Sellers",
+          "nodeLineageTag": "cf4a7d5f-57f8-4624-8f65-b079135578be",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 176.73327999960748,
+            "y": 595.73269700865376
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "8ec94420-7702-4a4f-bc92-e3a1e3520f34",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0.86634850432682242
+          },
+          "nodeIndex": "Measures (2)",
+          "nodeLineageTag": "0e335e4a-8ad2-44d7-84aa-a926b42b89a2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 306.28499192211711
+          },
+          "nodeIndex": "Customer Details",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 53.515554312341685,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

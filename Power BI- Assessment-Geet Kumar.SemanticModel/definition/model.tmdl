@@ -1,0 +1,28 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Geoloaction","Customer Details","Order Items","Order Payment","Order Review","Orders","Products","Sellers","Category Name","Measures (2)"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Geoloaction
+ref table 'Customer Details'
+ref table 'Order Items'
+ref table 'Order Payment'
+ref table 'Order Review'
+ref table Orders
+ref table Products
+ref table Sellers
+ref table 'Category Name'
+ref table Calendar
+ref table 'Measures (2)'
+
+ref cultureInfo en-IN
+

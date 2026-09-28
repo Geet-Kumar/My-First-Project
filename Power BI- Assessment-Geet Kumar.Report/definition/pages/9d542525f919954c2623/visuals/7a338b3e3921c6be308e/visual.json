@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "7a338b3e3921c6be308e",
+  "position": {
+    "x": 124.87789196344889,
+    "y": 242.19549124243161,
+    "z": 4000,
+    "height": 474.43390259329539,
+    "width": 974.77545857052507,
+    "tabOrder": 4000
+  },
+  "visualGroup": {
+    "displayName": "QV3",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "69fd6f174634bd8ca7ce",
+  "position": {
+    "x": 91.93688471133521,
+    "y": 32.41989922013363,
+    "z": 1000,
+    "height": 461.48007590132829,
+    "width": 986.11005692599622,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "order_id"
+                }
+              },
+              "queryRef": "Orders.order_id",
+              "nativeQueryRef": "order_id"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures (2)"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "Measures (2).Total Sales",
+              "nativeQueryRef": "Total Sales"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customer Details"
+                    }
+                  },
+                  "Property": "customer_state"
+                }
+              },
+              "queryRef": "Customer Details.customer_state",
+              "nativeQueryRef": "customer_state"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Estimated Delivery Date"
+                }
+              },
+              "queryRef": "Orders.Estimated Delivery Date",
+              "nativeQueryRef": "Estimated Delivery Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Delivered Customer Date"
+                }
+              },
+              "queryRef": "Orders.Delivered Customer Date",
+              "nativeQueryRef": "Delivered Customer Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Delivery Status"
+                }
+              },
+              "queryRef": "Orders.Delivery Status",
+              "nativeQueryRef": "Delivery Status"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Q3DR'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "dd87fff9b8d317a5aa26",
+  "isHidden": true
+}

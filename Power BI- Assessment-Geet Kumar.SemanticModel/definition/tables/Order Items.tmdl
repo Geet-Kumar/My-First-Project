@@ -1,0 +1,85 @@
+table 'Order Items'
+	lineageTag: 9cff82b3-867c-4212-a6c7-1c9f289cbf58
+
+	column order_id
+		dataType: string
+		lineageTag: 6f7a80bc-7b2f-42f3-959d-29dadcfa8efb
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_item_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3d31b542-6711-46d2-80c9-59bbd82c516b
+		summarizeBy: sum
+		sourceColumn: order_item_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: b17cab08-123b-4cde-a0a2-a42384660d32
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_id
+		dataType: string
+		lineageTag: a3cd617e-c50e-43b9-acc8-816e788409dd
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column shipping_limit_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0f9af20c-4aba-4762-ab19-56215af1c4b4
+		summarizeBy: none
+		sourceColumn: shipping_limit_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column price
+		dataType: double
+		lineageTag: f6e9c141-6950-48a2-802b-3c129f1c974a
+		summarizeBy: sum
+		sourceColumn: price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column freight_value
+		dataType: double
+		lineageTag: 2ad71525-5b26-4246-80c2-74be2682f571
+		summarizeBy: sum
+		sourceColumn: freight_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Delivery Status' = RELATED(Orders[Delivery Status])
+		lineageTag: 988d9733-542a-4089-8604-9593241f6e97
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Order Items' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\Nexusgoods_order_items_dataset.csv"),[Delimiter=",", Columns=7, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"shipping_limit_date", type datetime}, {"price", type number}, {"freight_value", type number}, {"order_item_id", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

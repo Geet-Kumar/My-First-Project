@@ -1,0 +1,53 @@
+table Sellers
+	lineageTag: cf4a7d5f-57f8-4624-8f65-b079135578be
+
+	column seller_id
+		dataType: string
+		lineageTag: a0fe378e-9f76-4653-ae68-cc391140f90d
+		summarizeBy: none
+		sourceColumn: seller_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_zip_code_prefix
+		dataType: string
+		lineageTag: ac4745ad-04a8-4786-84a1-b109f4223540
+		summarizeBy: none
+		sourceColumn: seller_zip_code_prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_city
+		dataType: string
+		lineageTag: b44841ea-4f1a-4706-857d-b1e3669e11f6
+		summarizeBy: none
+		sourceColumn: seller_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column seller_state
+		dataType: string
+		lineageTag: a941754f-a75b-4dc4-8627-4cfb3ab2f1f3
+		summarizeBy: none
+		sourceColumn: seller_state
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sellers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\Nexusgoods_sellers_dataset.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"seller_id", type text}, {"seller_zip_code_prefix", Int64.Type}, {"seller_city", type text}, {"seller_state", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"seller_id", Text.Trim, type text}, {"seller_city", Text.Trim, type text}, {"seller_state", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"seller_id", Text.Clean, type text}, {"seller_city", Text.Clean, type text}, {"seller_state", Text.Clean, type text}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Cleaned Text",{{"seller_city", Text.Proper, type text}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Capitalized Each Word",{{"seller_zip_code_prefix", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

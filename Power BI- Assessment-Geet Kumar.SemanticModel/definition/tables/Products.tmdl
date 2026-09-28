@@ -1,0 +1,107 @@
+table Products
+	lineageTag: d7429e04-9df0-4940-8ab0-ec521d850744
+
+	column product_id
+		dataType: string
+		lineageTag: cc9ea27c-1942-4692-83c9-e9b6b0c471d8
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name
+		dataType: string
+		lineageTag: c8f95ca0-7db9-4371-8607-bcbde9ab9c04
+		summarizeBy: none
+		sourceColumn: product_category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name_length
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dbbe412-8562-402c-b35b-6c25b0315ec4
+		summarizeBy: sum
+		sourceColumn: product_name_length
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Description Length'
+		dataType: int64
+		formatString: 0
+		lineageTag: b39237c8-a820-41aa-a11a-a35b525e7ef5
+		summarizeBy: sum
+		sourceColumn: Product Description Length
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Photos Qty'
+		dataType: int64
+		formatString: 0
+		lineageTag: 086c5f96-b07a-413c-94a5-fc6d94d29a72
+		summarizeBy: sum
+		sourceColumn: Product Photos Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Weight (g)'
+		dataType: int64
+		formatString: 0
+		lineageTag: e49c8fc9-19ee-4829-9351-59fbabb824f9
+		summarizeBy: sum
+		sourceColumn: Product Weight (g)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Length (cm)'
+		dataType: double
+		lineageTag: 3bd73823-6d23-4738-a709-1dd2238a4bfe
+		summarizeBy: sum
+		sourceColumn: Product Length (cm)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Product Height (cm)'
+		dataType: double
+		lineageTag: 00db8074-58f9-47aa-b671-55e41797a3a9
+		summarizeBy: sum
+		sourceColumn: Product Height (cm)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Product Width (cm)'
+		dataType: double
+		lineageTag: a04ac724-3a91-47bc-96d1-0ff2302b8487
+		summarizeBy: sum
+		sourceColumn: Product Width (cm)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Products = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\Nexusgoods_products_dataset.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_id", type text}, {"product_category_name", type text}, {"product_name_lenght", Int64.Type}, {"product_description_lenght", Int64.Type}, {"product_photos_qty", Int64.Type}, {"product_weight_g", Int64.Type}, {"product_length_cm", Int64.Type}, {"product_height_cm", Int64.Type}, {"product_width_cm", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"product_name_lenght", "product_name_length"}, {"product_description_lenght", "product_description_length"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","_"," ",Replacer.ReplaceText,{"product_category_name"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Replaced Value",{{"product_length_cm", type number}, {"product_height_cm", type number}, {"product_width_cm", type number}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Changed Type1","","Unknown",Replacer.ReplaceValue,{"product_category_name"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Replaced Value1",{{"product_description_length", "Product Description Length"}, {"product_photos_qty", "Product Photos Qty"}, {"product_weight_g", "Product Weight (g)"}, {"product_length_cm", "Product Length (cm)"}, {"product_height_cm", "Product Height (cm)"}, {"product_width_cm", "Product Width (cm)"}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Renamed Columns1",{{"product_id", Text.Trim, type text}, {"product_category_name", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"product_id", Text.Clean, type text}, {"product_category_name", Text.Clean, type text}}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Cleaned Text",{{"product_category_name", Text.Proper, type text}})
+				in
+				    #"Capitalized Each Word"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

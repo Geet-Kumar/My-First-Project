@@ -1,0 +1,61 @@
+table 'Order Payment'
+	lineageTag: f82a1423-9e94-42ef-b6f9-fd195430444b
+
+	column order_id
+		dataType: string
+		lineageTag: 2c9724f1-ad06-43b2-8a2d-b7e25beae5b5
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_sequential
+		dataType: int64
+		formatString: 0
+		lineageTag: 4adc7ffc-9703-47cf-a503-8fc0ec6ec35c
+		summarizeBy: sum
+		sourceColumn: payment_sequential
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_type
+		dataType: string
+		lineageTag: baf343ff-93e1-4ee5-b689-82d8598cfbaf
+		summarizeBy: none
+		sourceColumn: payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_installments
+		dataType: int64
+		formatString: 0
+		lineageTag: a4814033-7722-4473-ab83-fe56ff4edd41
+		summarizeBy: sum
+		sourceColumn: payment_installments
+
+		annotation SummarizationSetBy = Automatic
+
+	column payment_value
+		dataType: double
+		lineageTag: 7e99b939-3ca3-4dcf-b4e0-2d2e24f1389e
+		summarizeBy: sum
+		sourceColumn: payment_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Order Payment' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\Nexusgoods_order_payments_dataset.csv"),[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"payment_installments", Int64.Type}, {"payment_value", type number}, {"payment_sequential", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

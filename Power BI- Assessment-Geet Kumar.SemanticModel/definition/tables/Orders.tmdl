@@ -1,0 +1,136 @@
+table Orders
+	lineageTag: ce08c692-cec8-4d01-9a0c-80f8176a0345
+
+	column order_id
+		dataType: string
+		lineageTag: eb221596-0199-4c75-890b-b9eb7219cc42
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: b9503c36-eadd-4488-a408-b99cf4b71575
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Status'
+		dataType: string
+		lineageTag: 87b43b01-1c51-4f0c-91c7-9ca87ace04e0
+		summarizeBy: none
+		sourceColumn: Order Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_purchase_timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2a9cc3fd-35f8-4ee3-9e48-1596e9893e8e
+		summarizeBy: none
+		sourceColumn: order_purchase_timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_approved_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bd53c522-a853-4b72-bffe-1475b8ea8e35
+		summarizeBy: none
+		sourceColumn: order_approved_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_delivered_carrier_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a7249f99-b1a7-41a2-9b72-a47a5884708e
+		summarizeBy: none
+		sourceColumn: order_delivered_carrier_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_delivered_customer_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bc02174f-8f75-496d-97e4-85897e7ba63a
+		summarizeBy: none
+		sourceColumn: order_delivered_customer_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_estimated_delivery_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 39168cd0-1927-4778-98d1-bbec48a21dc5
+		summarizeBy: none
+		sourceColumn: order_estimated_delivery_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Delivery Status' =
+			
+			IF (
+			    ISBLANK ( Orders[order_delivered_customer_date] ),
+			    BLANK(),
+			    IF (
+			        Orders[order_delivered_customer_date]
+			            > Orders[order_estimated_delivery_date],
+			        "Delayed",
+			        "On Time"
+			    )
+			)
+		lineageTag: ccddea85-e4cf-4a6b-a3ac-430ebca207bd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Purchase Date' = DATEVALUE(Orders[order_purchase_timestamp])
+		formatString: dd-mm-yyyy
+		lineageTag: 4c5d7844-b79b-49bb-82a0-b9521c67c485
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Estimated Delivery Date' = DATEVALUE(Orders[order_estimated_delivery_date])
+		formatString: dd-mm-yyyy
+		lineageTag: d7bb9f58-725e-4008-922d-002c443b9c89
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Delivered Customer Date' = DATEVALUE(Orders[order_delivered_customer_date])
+		formatString: dd-mm-yyyy
+		lineageTag: b0625d26-644f-4d8d-a7f7-76fdaa8ea134
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\Nexusgoods_orders_dataset.csv"),[Delimiter=",", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"order_id", type text}, {"customer_id", type text}, {"order_status", type text}, {"order_purchase_timestamp", type datetime}, {"order_approved_at", type datetime}, {"order_delivered_carrier_date", type datetime}, {"order_delivered_customer_date", type datetime}, {"order_estimated_delivery_date", type datetime}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Changed Type",{{"order_estimated_delivery_date", type date}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type1",{{"order_status", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"order_status", Text.Clean, type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Cleaned Text",{{"order_status", "Order Status"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

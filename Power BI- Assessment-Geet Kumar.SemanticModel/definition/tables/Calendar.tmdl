@@ -1,0 +1,66 @@
+table Calendar
+	lineageTag: 8ec94420-7702-4a4f-bc92-e3a1e3520f34
+
+	column Date
+		formatString: dd-mm-yyyy
+		lineageTag: 80a8b116-c17c-45ac-8994-bfb11ddd6d75
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year = YEAR(Calendar[Date])
+		formatString: 0
+		lineageTag: ddb83e96-6211-4ac8-8707-c0e562452c80
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number' = MONTH(Calendar[Date])
+		formatString: 0
+		lineageTag: dd245886-676b-4d7e-a0f9-6691f64f78ec
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT(Calendar[Date], "MMMM")
+		lineageTag: 862052e4-107c-46c9-b384-e2b8369c4099
+		summarizeBy: none
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = "Q" & QUARTER(Calendar[Date])
+		lineageTag: 84d2ce4d-187b-432e-8cf9-f42c4ecccf4f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month' = FORMAT('Calendar'[Date], "MMM yyyy")
+		lineageTag: 3082b1b1-34c8-4626-b352-9cfc3719484a
+		summarizeBy: none
+		sortByColumn: 'Year Month Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Month Sort' = YEAR('Calendar'[Date]) * 100 + MONTH('Calendar'[Date])
+		formatString: 0
+		lineageTag: f80937a4-0895-4e49-917d-54b9b225bf26
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendar = calculated
+		mode: import
+		source =
+				
+				CALENDAR (
+				    MIN ( Orders[order_purchase_timestamp] ),
+				    MAX ( Orders[order_purchase_timestamp] )
+				)
+
+	annotation PBI_Id = 5345a26c82894189b040138babcabf54
+

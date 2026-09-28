@@ -1,0 +1,62 @@
+table Geoloaction
+	lineageTag: 40dc4fc7-81b2-4bc7-ab44-28bb10b2bd25
+
+	column 'Zip Code Prefix'
+		dataType: string
+		lineageTag: a31fcbf3-b47e-4376-a9eb-e0b48727ae3e
+		summarizeBy: none
+		sourceColumn: Zip Code Prefix
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: string
+		lineageTag: b625aaac-a656-4359-ba7a-f18d63c77f51
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: string
+		lineageTag: bd4d1a46-22ef-444c-9ddd-be4eb2cd5b5e
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: eb7f2a62-97a3-4863-b221-a9ca50818c01
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 8a6a4ed6-ee75-45cd-8aed-aed196c9241b
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Geoloaction = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\Nexusgood_geolocation_dataset.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"geolocation_zip_code_prefix", Int64.Type}, {"geolocation_lat", type number}, {"geolocation_lng", type number}, {"geolocation_city", type text}, {"geolocation_state", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(Table.TransformColumnTypes(#"Changed Type", {{"geolocation_zip_code_prefix", type text}, {"geolocation_lat", type text}, {"geolocation_lng", type text}}, "en-IN"),{{"geolocation_zip_code_prefix", Text.Trim, type text}, {"geolocation_lat", Text.Trim, type text}, {"geolocation_lng", Text.Trim, type text}, {"geolocation_city", Text.Trim, type text}, {"geolocation_state", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"geolocation_zip_code_prefix", Text.Clean, type text}, {"geolocation_lat", Text.Clean, type text}, {"geolocation_lng", Text.Clean, type text}, {"geolocation_city", Text.Clean, type text}, {"geolocation_state", Text.Clean, type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Cleaned Text"),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Removed Duplicates",{{"geolocation_city", Text.Proper, type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Capitalized Each Word",{{"geolocation_zip_code_prefix", "Zip Code Prefix"}, {"geolocation_lat", "Latitude"}, {"geolocation_lng", "Longitude"}, {"geolocation_city", "City"}, {"geolocation_state", "State"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

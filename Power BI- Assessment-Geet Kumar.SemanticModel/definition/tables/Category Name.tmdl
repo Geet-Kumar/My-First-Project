@@ -1,0 +1,39 @@
+table 'Category Name'
+	lineageTag: 5fa9261b-5c28-47c7-a253-bc39680ae495
+
+	column 'Product Category (Portuguese)'
+		dataType: string
+		lineageTag: 109546e0-e2d6-433a-b764-575623b721ff
+		summarizeBy: none
+		sourceColumn: Product Category (Portuguese)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Category (English)'
+		dataType: string
+		lineageTag: b3ec07a7-1c99-42cc-9ad8-e6faae8cbae5
+		summarizeBy: none
+		sourceColumn: Product Category (English)
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Category Name' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\admin\Desktop\New folder\skillovilla\Power BI\ShopNest store\Nexusgoods store capstone\product_category_name_translation.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"product_category_name", type text}, {"product_category_name_english", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type1","_"," ",Replacer.ReplaceText,{"product_category_name", "product_category_name_english"}),
+				    #"Capitalized Each Word" = Table.TransformColumns(#"Replaced Value",{{"product_category_name", Text.Proper, type text}, {"product_category_name_english", Text.Proper, type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Capitalized Each Word",{{"product_category_name", Text.Trim, type text}, {"product_category_name_english", Text.Trim, type text}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Trimmed Text",{{"product_category_name", Text.Clean, type text}, {"product_category_name_english", Text.Clean, type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Cleaned Text",{{"product_category_name", "Product Category (Portuguese)"}, {"product_category_name_english", "Product Category (English)"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

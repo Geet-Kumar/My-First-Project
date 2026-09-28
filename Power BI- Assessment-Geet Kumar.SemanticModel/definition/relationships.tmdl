@@ -1,0 +1,34 @@
+relationship f10cf481-f08a-5193-d7a6-0ba3456d0ff8
+	crossFilteringBehavior: bothDirections
+	fromColumn: Orders.customer_id
+	toColumn: 'Customer Details'.customer_id
+
+relationship 01ba8654-7471-256f-fd50-bec5e89b318f
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Order Items'.order_id
+	toColumn: Orders.order_id
+
+relationship 2043cb96-0ecc-fd5e-3fec-fa58275e9d6c
+	fromColumn: 'Order Payment'.order_id
+	toColumn: Orders.order_id
+
+relationship 9da997ca-eed5-511f-1490-f11b23085ab1
+	fromColumn: 'Order Review'.order_id
+	toColumn: Orders.order_id
+
+relationship 3386b33c-ff47-8048-3246-b0f42b4a9021
+	fromColumn: 'Order Items'.product_id
+	toColumn: Products.product_id
+
+relationship c5e7a74f-eea7-c2bd-c02f-5a4a5d245a18
+	fromColumn: 'Order Items'.seller_id
+	toColumn: Sellers.seller_id
+
+relationship 603be03c-cd51-acb9-d727-8e0e7c89b8b5
+	fromColumn: Products.product_category_name
+	toColumn: 'Category Name'.'Product Category (Portuguese)'
+
+relationship ff30db66-ef54-d3d4-81b3-0e157ce3713b
+	fromColumn: Orders.'Purchase Date'
+	toColumn: Calendar.Date
+
