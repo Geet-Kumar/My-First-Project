@@ -48,7 +48,9 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q1. Which are the top 10 product categories by total sales?
 
-![Q1](images/q1_top_categories.png)
+![Q1]
+<img width="940" height="442" alt="image" src="https://github.com/user-attachments/assets/f4a8ae7c-fab4-4389-b85e-55b873bdd2c0" />
+
 
 **Data available:** Order Items (product, price), Products (category), Category Translation (English names).
 
