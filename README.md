@@ -48,7 +48,6 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q1. Which are the top 10 product categories by total sales?
 
-![Q1]
 <img width="940" height="442" alt="image" src="https://github.com/user-attachments/assets/f4a8ae7c-fab4-4389-b85e-55b873bdd2c0" />
 
 
@@ -67,7 +66,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q2. How many delayed orders are there in each category?
 
-![Q2](images/q2_delayed_orders.png)
+<img width="940" height="443" alt="image" src="https://github.com/user-attachments/assets/189885f3-7a9f-45d9-9b8c-01a2d8fc6f63" />
 
 **Data available:** Orders (delivered date, estimated delivery date), Order Items, Products, Category Translation.
 
@@ -85,7 +84,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q3. How do delayed and on-time orders compare month by month? (with drill-through)
 
-![Q3](images/q3_monthly_delivery.png)
+<img width="940" height="415" alt="image" src="https://github.com/user-attachments/assets/a0a0baf5-d1fc-43b3-b067-cfd77d9862d4" />
 
 **Data available:** Orders (dates, status), Customers (state), Order Items and Payments (sales amount), Calendar.
 
@@ -103,7 +102,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q4. Which payment methods do customers use most?
 
-![Q4](images/q4_payment_methods.png)
+<img width="940" height="406" alt="image" src="https://github.com/user-attachments/assets/5b60e226-2d7a-4581-a891-756677bceb0e" />
 
 **Data available:** Order Payments (payment type, value), plus Year / Quarter / State / Category slicers through the model.
 
@@ -122,11 +121,15 @@ Nine CSV files describing the full order lifecycle:
 
 **Top 10 highest rated**
 
-![Q5 top](images/q5_top10_rated.png)
+<img width="940" height="213" alt="image" src="https://github.com/user-attachments/assets/f16d5226-a4ba-4341-972b-dd6fa32d8185" />
+
+<img width="940" height="223" alt="image" src="https://github.com/user-attachments/assets/3ea54f9f-c3fd-4a4c-a79c-abd3d621e6bf" />
+
 
 **Bottom 10 lowest rated**
 
-![Q5 bottom](images/q5_bottom10_rated.png)
+<img width="940" height="433" alt="image" src="https://github.com/user-attachments/assets/4dd5b57e-0646-41e9-b4d8-da4ba390495b" />
+
 
 **Data available:** Order Reviews (score 1–5), Order Items (to link reviews to products), Products.
 
@@ -141,7 +144,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q6. Which states have high and low sales?
 
-![Q6](images/q6_state_sales.png)
+<img width="940" height="434" alt="image" src="https://github.com/user-attachments/assets/540e23f3-a2b4-4d2a-afa9-48af6b86ea1b" />
 
 **Data available:** Customers (state), Orders, Payments, Geolocation (coordinates for the map).
 
@@ -159,7 +162,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q7. Is there a seasonal or quarterly sales pattern?
 
-![Q7](images/q7_quarterly_sales.png)
+<img width="940" height="428" alt="image" src="https://github.com/user-attachments/assets/1e7b09ad-a9b4-421c-9b1d-5cfb46206234" />
 
 **Data available:** Orders (purchase date), Payments (sales value), Calendar (Year, Quarter).
 
@@ -177,7 +180,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q8. What is the total revenue, and how has it changed over time?
 
-![Q8](images/q8_revenue_trend.png)
+![Uploading image.png…]()
 
 **Data available:** Order Payments (payment value), Orders (purchase date), Calendar.
 
