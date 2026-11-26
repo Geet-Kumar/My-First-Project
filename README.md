@@ -46,7 +46,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q1. Which are the top 10 product categories by total sales?
 
-<img width="940" height="442" alt="image" src="https://github.com/user-attachments/assets/f4a8ae7c-fab4-4389-b85e-55b873bdd2c0" />
+<img width="940" height="442" alt="image" src="https://github.com/user-attachments/assets/feb412c9-c876-4e2b-8cdd-1285847b291d" />
 
 
 **Data available:** Order Items (product, price), Products (category), Category Translation (English names).
@@ -64,7 +64,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q2. How many delayed orders are there in each category?
 
-<img width="940" height="443" alt="image" src="https://github.com/user-attachments/assets/189885f3-7a9f-45d9-9b8c-01a2d8fc6f63" />
+<img width="940" height="443" alt="image" src="https://github.com/user-attachments/assets/ff75d6b6-eafd-44ae-9d2e-42a39da4eace" />
 
 **Data available:** Orders (delivered date, estimated delivery date), Order Items, Products, Category Translation.
 
@@ -82,7 +82,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q3. How do delayed and on-time orders compare month by month? (with drill-through)
 
-<img width="940" height="415" alt="image" src="https://github.com/user-attachments/assets/a0a0baf5-d1fc-43b3-b067-cfd77d9862d4" />
+<img width="940" height="415" alt="image" src="https://github.com/user-attachments/assets/388843fc-f02c-4eae-8b42-063f8527e12a" />
 
 **Data available:** Orders (dates, status), Customers (state), Order Items and Payments (sales amount), Calendar.
 
@@ -100,8 +100,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q4. Which payment methods do customers use most?
 
-<img width="940" height="401" alt="image" src="https://github.com/user-attachments/assets/e0b0bb9b-1b06-4745-aa22-35393b08abc3" />
-
+<img width="940" height="401" alt="image" src="https://github.com/user-attachments/assets/548963cd-b83e-4d88-941c-764585ce86e9" />
 
 **Data available:** Order Payments (payment type, value), plus Year / Quarter / State / Category slicers through the model.
 
@@ -120,15 +119,11 @@ Nine CSV files describing the full order lifecycle:
 
 **Top 10 highest rated**
 
-<img width="940" height="213" alt="image" src="https://github.com/user-attachments/assets/f16d5226-a4ba-4341-972b-dd6fa32d8185" />
-
-<img width="940" height="223" alt="image" src="https://github.com/user-attachments/assets/3ea54f9f-c3fd-4a4c-a79c-abd3d621e6bf" />
-
+<img width="940" height="213" alt="image" src="https://github.com/user-attachments/assets/a412cec2-e8ac-49b0-ac3d-e0ff4d72f72b" />
 
 **Bottom 10 lowest rated**
 
-<img width="940" height="433" alt="image" src="https://github.com/user-attachments/assets/4dd5b57e-0646-41e9-b4d8-da4ba390495b" />
-
+<img width="940" height="223" alt="image" src="https://github.com/user-attachments/assets/2235e862-721d-4694-aac3-2e2ef5fceb7a" />
 
 **Data available:** Order Reviews (score 1–5), Order Items (to link reviews to products), Products.
 
@@ -143,7 +138,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q6. Which states have high and low sales?
 
-<img width="940" height="434" alt="image" src="https://github.com/user-attachments/assets/540e23f3-a2b4-4d2a-afa9-48af6b86ea1b" />
+<img width="940" height="433" alt="image" src="https://github.com/user-attachments/assets/98b64a14-4244-4ead-8bc0-636787257dd3" />
 
 **Data available:** Customers (state), Orders, Payments, Geolocation (coordinates for the map).
 
@@ -161,8 +156,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q7. Is there a seasonal or quarterly sales pattern?
 
-<img width="940" height="434" alt="image" src="https://github.com/user-attachments/assets/d9fac940-b1a0-4523-a836-61064d9efb03" />
-
+<img width="940" height="434" alt="image" src="https://github.com/user-attachments/assets/89595e09-78f5-40a3-a25a-cfa5039b1ef7" />
 
 **Data available:** Orders (purchase date), Payments (sales value), Calendar (Year, Quarter).
 
@@ -180,9 +174,7 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q8. What is the total revenue, and how has it changed over time?
 
-<img width="940" height="403" alt="image" src="https://github.com/user-attachments/assets/0b214f70-6d3f-48dc-a675-4610bc2c787b" />
-
-
+<img width="940" height="403" alt="image" src="https://github.com/user-attachments/assets/9dd80da4-044a-4838-aea6-e40dc1efa605" />
 
 **Data available:** Order Payments (payment value), Orders (purchase date), Calendar.
 
