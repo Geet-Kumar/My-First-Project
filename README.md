@@ -218,3 +218,7 @@ Nine CSV files describing the full order lifecycle:
 1. Download or clone this repository.
 2. Keep the `.pbip` file and its `.Report` and `.SemanticModel` folders together in one folder.
 3. Open the `.pbip` file in Power BI Desktop.
+
+- **Currency:** The source data does not specify a currency. Because the dataset is
+  Brazilian (boleto payments, Portuguese categories, Brazilian sellers), values are
+  assumed to be Brazilian reais (R$). No currency conversion was applied.
