@@ -1,4 +1,4 @@
-# My-First-Project
+<img width="940" height="428" alt="image" src="https://github.com/user-attachments/assets/8a0bfd4e-9993-4ea7-94bd-815995178bd0" /># My-First-Project
 
 # ShopNest Store Sales Analysis | Power BI
 
@@ -180,7 +180,8 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q8. What is the total revenue, and how has it changed over time?
 
-![Uploading image.png…]()
+<img width="940" height="428" alt="image" src="https://github.com/user-attachments/assets/ac041878-2460-4e0b-a2e7-c74288b31dbb" />
+
 
 **Data available:** Order Payments (payment value), Orders (purchase date), Calendar.
 
