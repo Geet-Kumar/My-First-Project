@@ -207,5 +207,12 @@ Nine CSV files describing the full order lifecycle:
 ## Repository contents
 
 - `README.md`: this summary
-- `images/`: dashboard screenshots for each question
-- Power BI file (`.pbix`): *add link here if hosted outside GitHub (Release, Google Drive or OneDrive)*
+- `Power BI- Assessment-Geet Kumar.pbip`: Power BI project file (open this in Power BI Desktop)
+- `Power BI- Assessment-Geet Kumar.Report/` and `.SemanticModel/`: report and data model folders that the .pbip file needs
+- `Power BI Assessment - Geet Kumar.docx`: written assessment
+
+- ## How to open the dashboard
+
+1. Download or clone this repository.
+2. Keep the `.pbip` file and its `.Report` and `.SemanticModel` folders together in one folder.
+3. Open the `.pbip` file in Power BI Desktop.
