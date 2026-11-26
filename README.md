@@ -102,7 +102,8 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q4. Which payment methods do customers use most?
 
-<img width="940" height="406" alt="image" src="https://github.com/user-attachments/assets/5b60e226-2d7a-4581-a891-756677bceb0e" />
+<img width="940" height="401" alt="image" src="https://github.com/user-attachments/assets/e0b0bb9b-1b06-4745-aa22-35393b08abc3" />
+
 
 **Data available:** Order Payments (payment type, value), plus Year / Quarter / State / Category slicers through the model.
 
@@ -180,7 +181,8 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q8. What is the total revenue, and how has it changed over time?
 
-<img width="940" height="428" alt="image" src="https://github.com/user-attachments/assets/ac041878-2460-4e0b-a2e7-c74288b31dbb" />
+<img width="940" height="403" alt="image" src="https://github.com/user-attachments/assets/0b214f70-6d3f-48dc-a675-4610bc2c787b" />
+
 
 
 **Data available:** Order Payments (payment value), Orders (purchase date), Calendar.
