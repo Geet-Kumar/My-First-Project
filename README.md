@@ -1,5 +1,3 @@
-<img width="940" height="428" alt="image" src="https://github.com/user-attachments/assets/8a0bfd4e-9993-4ea7-94bd-815995178bd0" /># My-First-Project
-
 # ShopNest Store Sales Analysis | Power BI
 
 An interactive Power BI dashboard built on anonymized ShopNest marketplace data. It answers **eight business questions** covering sales, delivery performance, customer payments, product ratings, regional demand, seasonality and revenue growth.
@@ -163,7 +161,8 @@ Nine CSV files describing the full order lifecycle:
 
 ## Q7. Is there a seasonal or quarterly sales pattern?
 
-<img width="940" height="428" alt="image" src="https://github.com/user-attachments/assets/1e7b09ad-a9b4-421c-9b1d-5cfb46206234" />
+<img width="940" height="434" alt="image" src="https://github.com/user-attachments/assets/d9fac940-b1a0-4523-a836-61064d9efb03" />
+
 
 **Data available:** Orders (purchase date), Payments (sales value), Calendar (Year, Quarter).
 
